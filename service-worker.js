@@ -1,6 +1,6 @@
 // ==== Offline Audio with Range support ====
 // バージョンを上げると配布更新されます
-const CACHE_NAME = "audio-player-v3";
+const CACHE_NAME = "audio-player-v4";
 
 // 必要ファイルを同一オリジンで
 const PRECACHE = [
@@ -9,7 +9,7 @@ const PRECACHE = [
   "./manifest.json",
   "./icon-192.png",
   "./icon-512.png",
-  "./QR_5.mp3",           // ←実ファイル名に合わせて
+  "./qr_5.mp3",           // ←実ファイル名に合わせて
 ];
 
 // install: 事前キャッシュ（確実に取り直すため cache:'reload'）
