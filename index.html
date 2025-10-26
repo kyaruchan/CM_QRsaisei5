@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <link rel="manifest" href="manifest.json">
-  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="apple-touch-icon" href="photo-192.png">
   <meta name="theme-color" content="#0b0f14">
   <meta charset="utf-8" />
   <meta name="viewport"
@@ -69,12 +69,16 @@
       </ul>
     </details>
 
-    <footer><small>© audio chapter player</small></footer>
+    <footer><small>© audio chapter player ©音読さん</small></footer>
   </div>
 
   <script>
     /* ===== 設定（ここだけ編集） ===== */
-    const AUDIO_SRC = "QR_5.mp3"; // 同じフォルダに置く
+    // どのURL形状（末尾スラ有無・index直指定）で開かれても同じ場所を指す
+    const AUDIO_SRC = new URL("./qr_5.mp3", location.href).toString();
+    document.getElementById("player").src = AUDIO_SRC;
+
+
     const CHAPTERS = [
       { label:"A", start:0.3   },
       { label:"B", start:21.4  },
@@ -141,7 +145,7 @@
       requestAnimationFrame(loopHighlight);
     }
 
-    // 数字キー 1〜9 でジャンプ
+    // 数字キー 1〜5 でジャンプ
     addEventListener("keydown", (e)=>{
       if (["INPUT","TEXTAREA"].includes(e.target?.tagName)) return;
       const n = parseInt(e.key,10);
@@ -154,13 +158,16 @@
 
     if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
-    navigator.serviceWorker.register("./service-worker.js")
+    navigator.serviceWorker.register(".service-worker.js")
       .catch(console.error);
   });
 }
   </script>
 </body>
 </html>
+
+
+
 
 
 
